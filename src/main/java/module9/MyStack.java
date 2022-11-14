@@ -2,34 +2,33 @@ package module9;
 
 import java.util.EmptyStackException;
 
-public class Stack {
+public class MyStack<T> {
     private int size;
-    private int[] nums;
+    private T[] nums;
     private int top;
-    public Stack(int initialSize){
+    public MyStack(){
         this.size = 0;
-        this.nums = new int[initialSize];
+        this.nums = (T[]) new Object[10];
         this.top = -1;
     }
-    public void push(int data) {
+    public void push(T data) {
         if (isFull()) {
             resize();
         }
         nums[++top] = data;
         size++;
     }
-
     public int size() {
         return size;
     }
     public void clear(){
-        this.nums = new int[size()];
         this.size = 0;
+        this.nums = (T[]) new Object[10];
         this.top = -1;
     }
-    public int pop() {
+    public T pop() {
         if(!isEmpty()){
-            int removedData = peek();
+            T removedData = peek();
             nums = removeTheElement(nums, top);
             top--;
             size--;
@@ -38,17 +37,12 @@ public class Stack {
         }
         throw new EmptyStackException();
     }
-    public static int[] removeTheElement(int[] arr, int index) {
-        if (arr == null || index < 0
-                || index >= arr.length) {
-
+    public  T[] removeTheElement(T[] arr, int index) {
+        if (arr == null || index < 0 || index >= arr.length) {
             return arr;
         }
-
-        int[] anotherArray = new int[arr.length - 1];
-
+        T[] anotherArray = (T[]) new Object[arr.length - 1];
         for (int i = 0, k = 0; i < arr.length; i++) {
-
             if (i == index) {
                 continue;
             }
@@ -56,7 +50,7 @@ public class Stack {
         }
         return anotherArray;
     }
-    public int peek() {
+    public T peek() {
         if(!isEmpty()){
             return nums[top];
         }
@@ -66,11 +60,11 @@ public class Stack {
         return top < 0;
     }
     private boolean isFull() {
-       return size == nums.length;
+        return size == nums.length;
     }
     private void resize() {
         int newSize = nums.length*2;
-        int[] newArray = new int[newSize];
+        T[] newArray = (T[]) new Object[newSize];
         for (int i = 0; i < nums.length; i++) {
             newArray[i] = nums[i];
         }

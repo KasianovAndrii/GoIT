@@ -5,11 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class MyArrayList {
-    Object arr[];
-    List l = new LinkedList();
-
-    int size;
-    int capacity;
+    Object arr[]; 
+    private int size;
+    private int capacity;
 
     public MyArrayList(){
         capacity = 10;
@@ -25,7 +23,6 @@ public class MyArrayList {
     int size() {
         return size;
     }
-
     public Object remove(int index) {
         if ( index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size " + index);
@@ -38,7 +35,6 @@ public class MyArrayList {
         size--;
         return removedElement;
     }
-
     void clear() {
         for (int to = size, i = size = 0; i < to; i++){
             arr[i] = null;

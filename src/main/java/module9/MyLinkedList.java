@@ -1,6 +1,6 @@
 package module9;
 
-public class LinkedList<T> {
+public class MyLinkedList<T> {
     private Node head;
     private Node tail;
     private int size;
@@ -71,14 +71,11 @@ public class LinkedList<T> {
 
     public T getValue(int index) {
        Node node = head;
-       T value = null;
-       while(node != null) {
-           if (node.value != null) {
-               return node.value;
-           }
-           value = node.value;
-       }
-       return value;
+
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node.value;
     }
 
     void addFirst(T val) {

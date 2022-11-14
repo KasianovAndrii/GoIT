@@ -6,17 +6,7 @@ public class MyHashMap<K, V> {
     private int capacity= 10;
     private int SIZE = 0;
 
-    static class Node<K, V> {
-        K key;
-        V value;
-        Node<K,V> next;
 
-        public Node(K key, V value, Node<K,V> next){
-            this.key = key;
-            this.value = value;
-            this.next = next;
-        }
-    }
 
     public MyHashMap(){
         table = new Node[capacity];
@@ -130,5 +120,17 @@ public class MyHashMap<K, V> {
     }
     private int hash(K key){
         return Math.abs(key.hashCode()) % capacity;
+    }
+
+    static class Node<K, V> {
+        K key;
+        V value;
+        Node<K,V> next;
+
+        public Node(K key, V value, Node<K,V> next){
+            this.key = key;
+            this.value = value;
+            this.next = next;
+        }
     }
 }
