@@ -14,23 +14,20 @@ public class HomeworkTask2 {
             String line = scanner.nextLine();
             String[] data = line.split(" ");
             String name = data[0];
-            Integer amount = Integer.parseInt(data[1]);
+            Integer age = Integer.parseInt(data[1]);
             if(!result.containsKey(name)) {
-                result.put(name, amount);
+                result.put(name, age);
             }
             else {
-                Integer currentAmount = result.get(name);
-                result.put(name, currentAmount + amount);
+                result.put(name, age);
             }
         }
-        Gson gson = new Gson();
         List<User> list = result.entrySet().stream()
-                                           .map((e)->new User(e.getKey(),e.getValue()))
+                                           .map((e)-> new User(e.getKey(),e.getValue()))
                                            .collect(Collectors.toList());
-
-        String json = new Gson().toJson(list);
-
-        System.out.println(json);
+        Writer writer = new FileWriter("FileJson.json");
+        new Gson().toJson(list, writer);
+        writer.close();
 
     }
 }
