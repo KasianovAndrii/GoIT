@@ -21,7 +21,7 @@ public class Main {
         myLinkedList.remove(1);
         myLinkedList.display();
 
-        System.out.println( "Get data by index: " + myLinkedList.getValue(0));
+        System.out.println( "Get data by index: " + myLinkedList.getValue(1));
         myLinkedList.clear();
         myLinkedList.display();
         System.out.println("--------Queue--------");
